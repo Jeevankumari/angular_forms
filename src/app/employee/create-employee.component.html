@@ -1,0 +1,96 @@
+<form [formGroup]= "employeeForm" (ngSubmit)= "onSubmit()" class= 'form-horozontal'>
+    <div class= 'panel panel-primary'>
+        <div class= 'panel-heading'>
+            <h3 class= 'panel-title'> Create Employee</h3>
+            </div>
+            <div class='panel-body'>
+                <div class='form-group' [ngClass]="{'has-error': employeeForm.get('fullName').errors && 
+                (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)}">
+                    <label class='cd-sm-2 control-label' for='fullName'>Name</label>
+                    <div class='cd-sm-8'>
+                        <input id='fullName' formControlName="fullName" type='text' class="form-control">
+                        <span class="help-block" *ngIf="employeeForm.get('fullName').errors && 
+                        (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)">
+                            <span *ngIf = "employeeForm.get('fullName').errors.required">
+                                FullName is requried
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='cd-sm-2 control-label' for='designation'>Designation</label>
+                    <div class='cd-sm-8'>
+                        <input id='designation' formControlName="designation" type='text' class="form-control">
+                    </div>
+                </div>
+                <div class='form-group' [ngClass]="{'has-error': employeeForm.get('email').errors && 
+                (employeeForm.get('email').touched || employeeForm.get('email').dirty)}">
+                    <label class='cd-sm-2 control-label' for='email' >Email</label>
+                    <div class='cd-sm-8'>
+                        <input id='email' formControlName="email" type='text' class="form-control">
+                    </div>
+                    <span class="help-block" *ngIf="employeeForm.get('email').errors && 
+                    (employeeForm.get('email').touched || employeeForm.get('email').dirty)">
+                        <span *ngIf = "employeeForm.get('email').errors.email">
+                            Please enter the valid email
+                        </span>
+                    </span>
+                </div>
+                <div class='form-group' [ngClass]="{'has-error': employeeForm.get('mobile').errors && 
+                (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)}">
+                    <label class='cd-sm-2 control-label' for='mobile'>Mobile</label>
+                    <div class='cd-sm-8'>
+                        <input id='mobile' formControlName="mobile" type='text' class="form-control">
+                    </div>
+                    <span class="help-block" *ngIf="employeeForm.get('mobile').errors && 
+                    (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)">
+                        <span *ngIf = "employeeForm.get('mobile').errors.pattern">
+                            Please enter valid mobile number
+                        </span>
+                        <span *ngIf = "employeeForm.get('mobile').errors.required">
+                            Please enter mobile number
+                        </span>
+                    </span>
+                </div>
+
+                <div formGroupName="address">
+                    <div class='form-group'>
+                        <label class='cd-sm-2 control-label' for='address'>Address</label>
+                        <a (click) = "toggleDisplay()">
+                            <mat-icon>add_comment</mat-icon> 
+                        </a>
+                        <div *ngIf = "isDisplay">
+                            <div  class='form-group'>
+                                <label class='cd-sm-2 control-label' for='doorNo'>Door NO.</label>
+                                <div class='cd-sm-8'>
+                                    <input id='doorNo' formControlName="doorNo" type='text' class="form-control">
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='cd-sm-2 control-label' for='roadName'>Road Name</label>
+                                <div class='cd-sm-8'>
+                                    <input id='roadName' formControlName="roadName" type='text' class="form-control">
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='cd-sm-2 control-label' for='locality'>Locality</label>
+                                <div class='cd-sm-8'>
+                                    <input id='locality' formControlName="locality" type='text' class="form-control">
+                                </div>
+                            </div>
+                            <div class='form-group'>
+                                <label class='cd-sm-2 control-label' for='pinCode'>PinCode</label>
+                                <div class='cd-sm-8'>
+                                    <input id='pinCode' formControlName="pinCode" type='text' class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div>
+            </div>
+    </div>
+</form>
+
