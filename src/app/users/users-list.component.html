@@ -1,0 +1,25 @@
+<table class= "table table-bordered">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Avatar</th>
+            <th>View</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users.data;">
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.avatar}}</td>
+            <!--td>{{users.data | json}}</td-->
+            <td>
+                <a (click) = "userDisplay(user.id)">
+                <mat-icon>remove_red_eye</mat-icon> 
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
